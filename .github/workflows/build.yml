@@ -15,7 +15,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: mkdir -p /opt/applications/sa
+        script: sudo mkdir -p /opt/applications/sa
   build:
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +31,7 @@ jobs:
       run: mvn -Dmaven.tests.skip=true -B package --file pom.xml
     - name: rename jar file
       run: mv target/*.jar target/sa.jar
-    - name: copy jat file via ssh password
+    - name: copy jar file via ssh password
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.HOST }}
