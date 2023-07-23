@@ -15,7 +15,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: mkdir /opt/applications/sa
   build:
     runs-on: ubuntu-latest
     steps:
@@ -29,12 +29,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -Dmaven.tests.skip=true -B package --file pom.xml
-    - name: Create folder
-      uses: appleboy/ssh-action@v1.0.0
+    - name: rename jar file
+      run: mv target/*.jar target/sa.jar
+    - name: copy jat file via ssh password
+      uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        source: "target/*.jar"
+        target: /opt/applications/sa
 
