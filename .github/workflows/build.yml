@@ -7,7 +7,6 @@ on:
 jobs:
   create-folder:
     runs-on: ubuntu-latest
-
     steps:
     - name: Create folder
       uses: appleboy/ssh-action@v1.0.0
@@ -17,7 +16,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: whoami
-    build:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Téléchargement des sources
