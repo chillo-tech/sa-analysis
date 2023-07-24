@@ -61,4 +61,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
             ln -sf /opt/appllications/sa/sa.jar /etc/init.d/sa
-            service start sa
+            service sa start
