@@ -3,7 +3,7 @@ name: Construction d'un projet
 on:
   push:
     branches: [ "main", "develop" ]
-  workflows_dispatch:
+  workflow_dispatch:
 jobs:
   create-folder:
     name: create-folder
