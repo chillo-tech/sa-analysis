@@ -57,5 +57,5 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-            ln -sf /opt/applications/sa/sa.jar /etc/init.d/sa
+            ln -sf /opt/appllications/sa/sa.jar /etc/init.d/sa
             /etc/init.d/sa start
